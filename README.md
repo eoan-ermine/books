@@ -28,6 +28,6 @@ Tracking repository of my reading of books
 ### Other
 
 - [ ] Asynchronous Programming in Rust ([source](https://rust-lang.github.io/async-book/))
-- [ ] The Little Book of Rust Macros ([source](https://nnethercote.github.io/perf-book/))
+- [ ] Rust Performance ([source](https://nnethercote.github.io/perf-book/))
 - [ ] Rust Design Patterns ([source](https://rust-unofficial.github.io/patterns/))
-- [ ] The Little Book of Rust Books ([source](https://lborb.github.io/book/))
+- [ ] The Little Book of Rust Macros ([source](https://veykril.github.io/tlborm/))
