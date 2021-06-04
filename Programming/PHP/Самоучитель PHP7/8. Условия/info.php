@@ -1,0 +1,9 @@
+<?php
+file_put_contents(
+	"extensions.txt",
+	var_dump(get_loaded_extensions())
+);
+file_put_contents(
+	"constants.txt",
+	var_dump(get_defined_constants(true))
+);
