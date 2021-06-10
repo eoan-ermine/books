@@ -26,6 +26,17 @@ class CountryController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            // The filter will be applied to the index action
+            // and the Last-Modified header will contain
+            // the date of the last update to the countries table in the database
+            [
+                'class' => 'yii\filters\HttpCache',
+                'only' => ['index'],
+                'lastModified' => function ($action, $params) {
+                    $q = new \yii\db\Query();
+                    return $q->from('countries')->max('updated_at');
+                }
+            ]
         ];
     }
 
