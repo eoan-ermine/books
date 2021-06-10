@@ -53,6 +53,11 @@ $config = [
         */
     ],
     'params' => $params,
+    'modules' => [
+        'forum' => [
+            'class' = 'app\modules\forum\Module',
+        ]
+    ]
 ];
 
 if (YII_ENV_DEV) {
