@@ -8,6 +8,8 @@ use yii\web\NotFoundHttpException;
 
 class PostController extends Controller
 {
+    public $layout = 'example';
+    
     public function actionView($id)
     {
         $model = Post::findOne($id);
