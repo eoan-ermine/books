@@ -55,7 +55,7 @@ $config = [
     'params' => $params,
     'modules' => [
         'forum' => [
-            'class' = 'app\modules\forum\Module',
+            'class' => 'app\modules\forum\Module',
         ]
     ]
 ];
