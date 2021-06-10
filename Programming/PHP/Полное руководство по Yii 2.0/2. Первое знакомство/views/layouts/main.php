@@ -9,8 +9,13 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\assets\SophisticatedAssetBundle;
 
 AppAsset::register($this);
+
+$bundle = SophisticatedAssetBundle::register(Yii::$app->view);
+$bundle->js[] = 'i18n/' . Yii::$app->language . '.js';
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
