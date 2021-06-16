@@ -3,6 +3,12 @@ Tracking repository of my reading of books
 
 ## Programming 
 
+### General
+
+#### Algorithms
+
+- [] Algorithmic Design and Techniques ([source](https://courses.edx.org/courses/course-v1:UCSanDiegoX+ALGS200x+1T2019/course/))
+
 ### Rust
 
 #### Introductory
@@ -25,7 +31,7 @@ Tracking repository of my reading of books
 - [ ] The Rust Unstable Book ([source](https://doc.rust-lang.org/unstable-book/))
 - [ ] Rust Forge ([source](https://forge.rust-lang.org/))
 
-### Other
+#### Other
 
 - [ ] Asynchronous Programming in Rust ([source](https://rust-lang.github.io/async-book/))
 - [ ] Rust Performance ([source](https://nnethercote.github.io/perf-book/))
