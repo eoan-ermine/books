@@ -15,3 +15,14 @@ struct isSemiRegular: std::bool_constant<
 
 template<typename T>
 concept SemiRegular = isSemiRegular<T>::value;
+
+template<typename T>
+concept Equal = requires(T a, T b) {
+	{ a == b } -> std::convertible_to<bool>;
+	{ a != b } -> std::convertible_to<bool>;
+};
+
+template<typename T>
+concept Regular = Equal<T> && SemiRegular<T>;
+
+int main() { }
