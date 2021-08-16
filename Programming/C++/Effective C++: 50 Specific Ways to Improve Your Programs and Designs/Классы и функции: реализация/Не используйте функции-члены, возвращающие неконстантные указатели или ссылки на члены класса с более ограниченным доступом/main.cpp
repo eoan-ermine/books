@@ -17,7 +17,7 @@ public:
 	// ^ SHIT FOR SAME REASON
 private:
 	Address address;
-	void verifyAddress() { }
+	void verifyAddress() {}
 };
 
 int main() {
