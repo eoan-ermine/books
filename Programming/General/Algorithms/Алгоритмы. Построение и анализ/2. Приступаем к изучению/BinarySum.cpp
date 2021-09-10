@@ -1,11 +1,11 @@
-#include <cstdint>
+#include <cstddef>
 
 template<std::size_t N>
 void BinarySum(bool A[N], bool B[N], bool C[N + 1]) {
 	// Precondition: elements of C are false-initialized
 	for(std::size_t i = N - 1; i >= 0; --i) {
-		bool a, b = A[i], B[i];
-		C[I + 1] += a ^ b;
-		C[I] += a && b;
+		bool a = A[i], b = B[i];
+		C[i + 1] += a ^ b;
+		C[i] += a && b;
 	}
 }

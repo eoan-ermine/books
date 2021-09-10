@@ -1,4 +1,4 @@
-#include <cstdint>
+#include <cstddef>
 
 template<typename T, std::size_t N>
 int LinearSearch(T array[N], T toFind) {
