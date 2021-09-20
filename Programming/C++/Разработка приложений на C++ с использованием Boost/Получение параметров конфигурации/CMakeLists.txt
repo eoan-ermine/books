@@ -1,0 +1,6 @@
+FIND_PACKAGE( Boost 1.71 COMPONENTS program_options REQUIRED )
+INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
+
+ADD_EXECUTABLE( anyExecutable main.cpp )
+
+TARGET_LINK_LIBRARIES( anyExecutable LINK_PUBLIC ${Boost_LIBRARIES} )
