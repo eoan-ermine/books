@@ -9,7 +9,7 @@
 %%
 
 calclist:/* nothing*/
-    | calc1st exp EOL { printf("= %d\n", $1); }
+    | calclist exp EOL { printf("= %d\n", $1); }
     ;
 
 exp: factor
