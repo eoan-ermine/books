@@ -10,7 +10,7 @@
 %%
 
 calclist:/* nothing*/
-    | calclist exp EOL { printf("= %d\n", $2); }
+    | calclist exp EOL { printf("= %d (0x%x)\n", $2, $2); }
     | calclist EOL { }
     ;
 
