@@ -13,7 +13,7 @@
 "("     { return OP; }
 ")"     { return CP; }
 
-"//".*  /* ignore comments */
+"//".*  { }
 
 \n      { return EOL; }
 [ \t]   { }

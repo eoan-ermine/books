@@ -5,12 +5,13 @@
 %token NUMBER
 %token ADD SUB MUL DIV ABS
 %token OP CP
-%token EOL
+%token EOL COMMENT
 
 %%
 
 calclist:/* nothing*/
     | calclist exp EOL { printf("= %d\n", $2); }
+    | calclist EOL { }
     ;
 
 exp: factor
