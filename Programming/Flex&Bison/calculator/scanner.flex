@@ -3,7 +3,6 @@
 %}
 
 %%
-
 "+"     { return ADD; }
 "-"     { return SUB; }
 "*"     { return MUL; }
@@ -13,5 +12,4 @@
 \n      { return EOL; }
 [ \t]   { }
 .       { printf("Mystery character %c\n", *yytext); }
-
 %%
