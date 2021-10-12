@@ -1,8 +1,15 @@
 %{
 #include <stdio.h>
+#include <stdlib.h>
+#include "calculator.h"
 %}
 
-%token NUMBER
+%union {
+    struct ast *a;
+    double d;
+}
+
+%token <d> NUMBER
 
 %token ADD SUB MUL DIV
 %token ABS AND
@@ -10,28 +17,35 @@
 %token OP CP
 %token EOL COMMENT
 
+%type <a> exp factor term
+
 %%
 
 calclist:/* nothing*/
-    | calclist exp EOL { printf("= %d (0x%x)\n", $2, $2); }
-    | calclist EOL { }
+    | calclist exp EOL {
+        printf("= %4.4g\n", eval($2));
+        treefree($2);
+        printf("> ");
+    }
+    | calclist EOL { printf("> "); }
     ;
 
 exp: factor
-    | exp ADD factor { $$ = $1 + $3; }
-    | exp SUB factor { $$ = $1 - $3; }
-    | exp ABS factor { $$ = $1 | $3; }
-    | exp AND factor { $$ = $1 & $3; }
+    | exp ADD factor { $$ = newast('+', $1, $3); }
+    | exp SUB factor { $$ = newast('-', $1, $3); }
+    | exp ABS factor { $$ = newast('|', $1, $3); }
+    | exp AND factor { $$ = newast('&', $1, $3); }
     ;
 
 factor: term
-    | factor MUL term { $$ = $1 * $3; }
-    | factor DIV term { $$ = $1 / $3; }
+    | factor MUL term { $$ = newast('*', $1, $3); }
+    | factor DIV term { $$ = newast('/', $1, $3); }
     ;
 
 term: NUMBER
-    | ABS term { $$ = $2 >= 0 ? $2 : -$2; }
+    | ABS term { $$ = newast('|', $2, NULL); }
     | OP exp CP { $$ = $2; }
+    | SUB term { $$ = newast('-', 0, $2); }
     ;
 
 %%
