@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 #include "calculator.h"
 %}
 
@@ -50,6 +51,58 @@ term: NUMBER
 
 %%
 
+struct ast *newast(int nodetype, struct ast *l, struct ast *r) {
+    struct ast *a = malloc(sizeof(struct ast));
+
+    if(!a) {
+        yyerror("out of space");
+        exit(0);
+    }
+    a->nodetype = nodetype;
+    a->l = l;
+    a->r = r;
+    return a;
+}
+
+struct ast *newnum(double d) {
+    struct numval *a = malloc(sizeof(struct numval));
+
+    if(!a) {
+        yyerror("out of space");
+        exit(0);
+    }
+    a->nodetype = 'K';
+    a->number = d;
+    return (struct ast*) a;
+}
+
+double eval(struct ast *a) {
+    double v;
+
+    switch(a->nodetype) {
+        case 'K': v = ((struct numval*)a)->number; break;
+
+        case '+': v = eval(a->l) + eval(a->r); break;
+        case '-': v = eval(a->l) - eval(a->r); break;
+        case '*': v = eval(a->l) * eval(a->r); break;
+        case '/': v = eval(a->l) / eval(a->r); break;
+
+        case '|':
+        if (a->r == NULL) {
+            v = eval(a->l);
+            if(v < 0) {
+                v = -v;
+            }
+        } else {
+            v = eval(a->l) & eval(a->r);
+        }
+        break;
+
+        default: printf("internal error: bad node %c\n", a->nodetype);
+    }
+    return v;
+}
+
 main(int argc, char **argv) {
     yyparse();
 }
@@ -57,3 +110,4 @@ main(int argc, char **argv) {
 yyerror(char *s) {
     fprintf(stderr, "error: %s\n", s);
 }
+
