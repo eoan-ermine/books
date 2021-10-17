@@ -20,6 +20,12 @@
 
 %type <a> exp factor term
 
+%left ABS AND
+%left ADD SUB
+%left MUL DIV
+
+%nonassoc MODULO UMINUS
+
 %%
 
 calclist:/* nothing*/
@@ -31,22 +37,16 @@ calclist:/* nothing*/
     | calclist EOL { printf("> "); }
     ;
 
-exp: factor
-    | exp ADD factor { $$ = newast('+', $1, $3); }
-    | exp SUB factor { $$ = newast('-', $1, $3); }
-    | exp ABS factor { $$ = newast('|', $1, $3); }
-    | exp AND factor { $$ = newast('&', $1, $3); }
-    ;
-
-factor: term
-    | factor MUL term { $$ = newast('*', $1, $3); }
-    | factor DIV term { $$ = newast('/', $1, $3); }
-    ;
-
-term: NUMBER { $$ = newnum($1); }
-    | ABS term { $$ = newast('|', $2, NULL); }
+exp: exp ADD exp { $$ = newast('+', $1, $3); }
+    | exp SUB exp { $$ = newast('-', $1, $3); }
+    | exp ABS exp { $$ = newast('|', $1, $3); }
+    | exp AND exp { $$ = newast('&', $1, $3); }
+    | exp MUL exp { $$ = newast('*', $1, $3); }
+    | exp DIV exp { $$ = newast('/', $1, $3); }
+    | ABS exp %prec MODULO { $$ = newast('|', $2, NULL); }
+    | SUB exp %prec UMINUS { $$ = newast('-', newnum(0), $2); }
     | OP exp CP { $$ = $2; }
-    | SUB term { $$ = newast('-', newnum(0), $2); }
+    | NUMBER { $$ = newnum($1); }
     ;
 
 %%
