@@ -43,10 +43,10 @@ factor: term
     | factor DIV term { $$ = newast('/', $1, $3); }
     ;
 
-term: NUMBER
+term: NUMBER { $$ = newnum($1); }
     | ABS term { $$ = newast('|', $2, NULL); }
     | OP exp CP { $$ = $2; }
-    | SUB term { $$ = newast('-', 0, $2); }
+    | SUB term { $$ = newast('-', newnum(0), $2); }
     ;
 
 %%
@@ -94,22 +94,44 @@ double eval(struct ast *a) {
                 v = -v;
             }
         } else {
-            v = eval(a->l) | eval(a->r);
+            v = (int)eval(a->l) | (int)eval(a->r);
         }
         break;
 
-        case '&': v = eval(a->l) & eval(a->r); break;
+        case '&': v = (int)eval(a->l) & (int)eval(a->r); break;
 
         default: printf("internal error: bad node %c\n", a->nodetype);
     }
     return v;
 }
 
-main(int argc, char **argv) {
-    yyparse();
+void treefree(struct ast* a) {
+    switch(a->nodetype) {
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+    case '|':
+    case '&':
+        if(a->l) treefree(a->l);
+        if(a->r) treefree(a->r);
+    case 'K':
+        free(a);
+        break;
+    default: printf("internal error: free bad node%c\n", a->nodetype);
+    }
 }
 
-yyerror(char *s) {
-    fprintf(stderr, "error: %s\n", s);
+void yyerror(char *s, ...) {
+    va_list ap;
+    va_start(ap, s);
+
+    fprintf(stderr, "%d: error: ", yylineno);
+    vfprintf(stderr, s, ap);
+    fprintf(stderr, "\n");
 }
 
+int main() {
+    printf("> ");
+    return yyparse();
+}

@@ -16,7 +16,7 @@ EXP ([Ee][-+]?[0-9]+)
 
 [0-9]+"."[0-9]*{EXP}? |
     "."?[0-9]+{EXP}? { yylval.d = atof(yytext); return NUMBER; }
-0x[a-f0-9]+     { yylval = strtol(yytext, NULL, 16); return NUMBER; }
+0x[a-f0-9]+     { yylval.d = strtol(yytext, NULL, 16); return NUMBER; }
 
 "("     { return OP; }
 ")"     { return CP; }
