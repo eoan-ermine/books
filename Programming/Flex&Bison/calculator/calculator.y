@@ -94,9 +94,11 @@ double eval(struct ast *a) {
                 v = -v;
             }
         } else {
-            v = eval(a->l) & eval(a->r);
+            v = eval(a->l) | eval(a->r);
         }
         break;
+
+        case '&': v = eval(a->l) & eval(a->r); break;
 
         default: printf("internal error: bad node %c\n", a->nodetype);
     }
