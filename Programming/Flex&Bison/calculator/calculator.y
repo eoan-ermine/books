@@ -51,8 +51,8 @@ exp: exp ADD exp { $$ = newast('+', $1, $3); }
 
 %%
 
-struct ast *newast(int nodetype, struct ast *l, struct ast *r) {
-    struct ast *a = malloc(sizeof(struct ast));
+ast *newast(int nodetype, struct ast *l, struct ast *r) {
+    ast *a = static_cast<ast*>(malloc(sizeof(struct ast)));
 
     if(!a) {
         yyerror("out of space");
@@ -64,8 +64,8 @@ struct ast *newast(int nodetype, struct ast *l, struct ast *r) {
     return a;
 }
 
-struct ast *newnum(double d) {
-    struct numval *a = malloc(sizeof(struct numval));
+ast *newnum(double d) {
+    numval *a = static_cast<numval*>(malloc(sizeof(struct numval)));
 
     if(!a) {
         yyerror("out of space");

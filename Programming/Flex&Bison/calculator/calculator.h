@@ -1,5 +1,5 @@
 extern int yylineno;
-void yyerror(char *s, ...);
+void yyerror(const char *s, ...);
 
 struct ast {
 	int nodetype;
