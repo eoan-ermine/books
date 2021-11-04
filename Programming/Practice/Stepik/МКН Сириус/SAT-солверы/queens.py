@@ -2,9 +2,10 @@ from pycosat import solve
 from itertools import combinations, product
 import sys
 
+N = 8
 
 def varnum(row, column):
-	return 100 * row + 10 * column
+	return 100 * row + 10 * column + 1
 
 
 def exactly_one_of(literals):
@@ -16,46 +17,42 @@ def exactly_one_of(literals):
 
 def one_digit_in_every_row():
 	clauses = []
-	for row in range(1, 10):
+	for row in range(N):
 		clauses += exactly_one_of([varnum(row, column)
-								   for column in range(1, 10)])
+								   for column in range(N)])
 	return clauses
 
 
 def one_digit_in_every_column():
 	clauses = []
-	for column in range(1, 10):
+	for column in range(N):
 		clauses += exactly_one_of([varnum(row, column)
-								   for row in range(1, 10)])
+								   for row in range(N)])
 	return clauses
 
 
 def one_digit_in_every_diagonal():
 	clauses = []
-	
-	# diagonal = [(1, 1), (2, 2) ...]	diagonal = [(2, 1), (3, 2)]
-	# Correct
 
-	for row in range(1, 8):
-		clauses += exactly_one_of([varnum(row + i, 1 + i) for i in range(0, 8) if (row + i <= 8) and (1 + i <= 8)])
+	for i in range(N - 1):
+		clauses += exactly_one_of(
+			[varnum(j, i + j) for j in range(N - i)]
+		)
 
-	# diagonal = [(1, 2), (2, 3)] 		diagonal = [(1, 3), (2, 4)]
-	# Correct
+	for i in range(1, N - 1):
+		clauses += exactly_one_of(
+			[varnum(j + i, j) for j in range(N - i)]
+		)
 
-	for column in range(2, 8):
-		clauses += exactly_one_of([varnum(1 + i, column + i) for i in range(0, 8) if (column + i <= 8) and (1 + i <= 8)])
-	
-	# diagonal = [(8, 1), (7, 2)]		diagonal = [(8, 2), (7, 3)]
-	# Correct
+	for i in range(N - 1):
+		clauses += exactly_one_of(
+			[varnum(j, N - 1 - (i + j)) for j in range(N - i)]
+		)
 
-	for column in range(1, 8):
-		clauses += exactly_one_of([varnum(8 - i, column + i) for i in range(0, 8) if (column + i <= 8) and (8 - i >= 1)])
-
-
-	# diagonal = [(2, 1), (1, 2)]		diagonal = [(3, 1), (2, 2), (1, 3)]
-
-	for row in range(2, 8):
-		clauses += exactly_one_of([varnum(row - i, 1 + i) for i in range(0, 8) if (row - i >= 1) and (1 + i <= 8)])
+	for i in range(1, N - 1):
+		clauses += exactly_one_of(
+			[varnum(j + i, N - 1 - j) for j in range(N - i)]
+		)
 
 	return clauses
 
@@ -73,9 +70,9 @@ def solve_puzzle(puzzle):
 		return None
 
 	result = []
-	for row in range(1, 10):
+	for row in range(N):
 		current_row = []
-		for column in range(1, 10):
+		for column in range(N):
 			if varnum(row, column) in solution:
 				current_row.append("*")
 			else:
