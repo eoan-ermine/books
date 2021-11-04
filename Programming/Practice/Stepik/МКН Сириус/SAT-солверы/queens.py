@@ -92,11 +92,29 @@ def solve_puzzle(n):
 				result.append(column - 1)
 	return result
 
+
+def check_pair(first, second):
+	x1, y1 = first
+	x2, y2 = second
+	return not((x1 == x2) or (y1 == y2) or (abs(x1 - x2) == abs(y1 - y2)))
+
+
+def check(result):
+	for x1, y1 in enumerate(result):
+		first_pair = (x1, y1)
+		for x2, y2 in enumerate(result[x1 + 1:]):
+			second_pair = (x1 + 1 + x2, y2)
+			if not check_pair(first_pair, second_pair):
+				return False
+	return True
+
+
 if __name__ == "__main__":
 	n = int(input())
 
 	result = solve_puzzle(n)
 	if result:
 		print(" ".join([str(e) for e in result]))
+		print(check(result))
 	else:
 		print(-1)
