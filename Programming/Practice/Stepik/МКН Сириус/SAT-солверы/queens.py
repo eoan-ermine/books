@@ -3,7 +3,6 @@ from itertools import combinations, product
 import logging
 import sys
 
-N = 8
 
 def varnum(row, column):
 	return 8 * row + column + 1
@@ -16,7 +15,7 @@ def exactly_one_of(literals):
 	return clauses
 
 
-def one_digit_in_every_row():
+def one_digit_in_every_row(N):
 	clauses = []
 	for row in range(1, N + 1):
 		clauses += exactly_one_of([varnum(row, column)
@@ -24,7 +23,7 @@ def one_digit_in_every_row():
 	return clauses
 
 
-def one_digit_in_every_column():
+def one_digit_in_every_column(N):
 	clauses = []
 	for column in range(1, N + 1):
 		clauses += exactly_one_of([varnum(row, column)
@@ -32,14 +31,14 @@ def one_digit_in_every_column():
 	return clauses
 
 
-def one_digit_in_every_diagonal():
+def one_digit_in_every_diagonal(N):
 	clauses = []
 	
 	# diagonal = [(1, 1), (2, 2) ...]	diagonal = [(2, 1), (3, 2)]
 	# Correct
 
 	for row in range(1, N):
-		diagonal = [(row + i, 1 + i) for i in range(0, 8) if (row + i <= 8) and (1 + i <= 8)]
+		diagonal = [(row + i, 1 + i) for i in range(0, N) if (row + i <= N) and (1 + i <= N)]
 		clauses += exactly_one_of([varnum(row, column) for row, column in diagonal])
 		logging.debug(diagonal)
 
@@ -47,7 +46,7 @@ def one_digit_in_every_diagonal():
 	# Correct
 
 	for column in range(2, N):
-		diagonal = [(1 + i, column + i) for i in range(0, 8) if (column + i <= 8) and (1 + i <= 8)]
+		diagonal = [(1 + i, column + i) for i in range(0, N) if (column + i <= N) and (1 + i <= N)]
 		clauses += exactly_one_of([varnum(row, column) for row, column in diagonal])
 		logging.debug(diagonal)
 	
@@ -55,7 +54,7 @@ def one_digit_in_every_diagonal():
 	# Correct
 
 	for column in range(1, N):
-		diagonal = [(8 - i, column + i) for i in range(0, 8) if (column + i <= 8) and (8 - i >= 1)]
+		diagonal = [(N - i, column + i) for i in range(0, N) if (column + i <= N) and (8 - i >= 1)]
 		clauses += exactly_one_of([varnum(row, column) for row, column in diagonal])
 		logging.debug(diagonal)
 
@@ -63,19 +62,19 @@ def one_digit_in_every_diagonal():
 	# Correct
 
 	for row in range(2, N):
-		diagonal = [(row - i, 1 + i) for i in range(0, 8) if (row - i >= 1) and (1 + i <= 8)]
+		diagonal = [(row - i, 1 + i) for i in range(0, N) if (row - i >= 1) and (1 + i <= N)]
 		clauses += exactly_one_of([varnum(row, column) for row, column in diagonal])
 		logging.debug(diagonal)
 
 	return clauses
 
 
-def solve_puzzle(puzzle):
+def solve_puzzle(n):
 	clauses = []
 
-	clauses += one_digit_in_every_row()
-	clauses += one_digit_in_every_column()
-	clauses += one_digit_in_every_diagonal()
+	clauses += one_digit_in_every_row(n)
+	clauses += one_digit_in_every_column(n)
+	clauses += one_digit_in_every_diagonal(n)
 
 	solution = solve(clauses)
 
@@ -83,9 +82,9 @@ def solve_puzzle(puzzle):
 		return None
 
 	result = []
-	for row in range(1, N + 1):
+	for row in range(1, n + 1):
 		current_row = []
-		for column in range(1, N + 1):
+		for column in range(1, n + 1):
 			if varnum(row, column) in solution:
 				current_row.append("*")
 			else:
@@ -98,9 +97,7 @@ if __name__ == "__main__":
 	logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 	n = int(input())
 
-	puzzle = [["*" for _ in range(n)] for _ in range(n)]
-	result = solve_puzzle(puzzle)
-
+	result = solve_puzzle(n)
 	if result:
 		print("\n".join(["".join([str(e) for e in element]) for element in result]))
 	else:
