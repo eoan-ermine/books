@@ -32,7 +32,7 @@ def one_or_zero_of(literals):
 def one_digit_in_every_row(N):
 	clauses = []
 	for row in range(1, N + 1):
-		clauses += one_or_zero_of([varnum(row, column)
+		clauses += exactly_one_of([varnum(row, column)
 								   for column in range(1, N + 1)])
 	return clauses
 
@@ -40,7 +40,7 @@ def one_digit_in_every_row(N):
 def one_digit_in_every_column(N):
 	clauses = []
 	for column in range(1, N + 1):
-		clauses += one_or_zero_of([varnum(row, column)
+		clauses += exactly_one_of([varnum(row, column)
 								   for row in range(1, N + 1)])
 	return clauses
 
@@ -90,23 +90,28 @@ def solve_puzzle(n):
 	clauses += one_digit_in_every_column(n)
 	clauses += one_digit_in_every_diagonal(n)
 
-	for solution in itersolve(clauses):
-		result = []
-		for row in range(1, n + 1):
-			current_row = []
-			for column in range(1, n + 1):
-				if varnum(row, column) in solution:
-					current_row.append("*")
-				else:
-					current_row.append("X")
-			result.append(current_row)
-		yield result
+	solution = solve(clauses)
+	if isinstance(solution, str):
+		return None
 
+	result = []
+	for row in range(1, n + 1):
+		current_row = []
+		for column in range(1, n + 1):
+			if varnum(row, column) in solution:
+				current_row.append("*")
+			else:
+				current_row.append("X")
+		result.append(current_row)
+
+	return result
 
 if __name__ == "__main__":
-	logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+	logging.basicConfig(stream=sys.stderr, level=logging.ERROR)
 	n = int(input())
 
-	for result in solve_puzzle(n):
+	result = solve_puzzle(n)
+	if result:
 		print("\n".join(["".join([str(e) for e in element]) for element in result]))
-		print()
+	else:
+		print(-1)
