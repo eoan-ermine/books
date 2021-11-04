@@ -115,4 +115,3 @@ if __name__ == "__main__":
 	result = solve_puzzle(n)
 	if result:
 		print(" ".join([str(e) for e in result]))
-		print(check(result))
