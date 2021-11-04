@@ -30,46 +30,46 @@ def one_or_zero_of(literals):
 
 def one_digit_in_every_row(N):
 	clauses = []
-	for row in range(1, N + 1):
+	for row in range(N):
 		clauses += exactly_one_of([varnum(row, column)
-								   for column in range(1, N + 1)])
+								   for column in range(N)])
 	return clauses
 
 
 def one_digit_in_every_column(N):
 	clauses = []
-	for column in range(1, N + 1):
+	for column in range(N):
 		clauses += exactly_one_of([varnum(row, column)
-								   for row in range(1, N + 1)])
+								   for row in range(N)])
 	return clauses
 
 
 def one_digit_in_every_diagonal(N):
 	clauses = []
 	
-	# diagonal = [(1, 1), (2, 2) ...]	diagonal = [(2, 1), (3, 2)]
+	# diagonal = [(0, 0), (1, 1), (7, 7)]	[(1, 0), (2, 1), (3, 2)]
 	# Correct
 
-	for row in range(1, N):
-		clauses += one_or_zero_of([varnum(row + i, 1 + i) for i in range(0, N) if (row + i <= N) and (1 + i <= N)])
+	for row in range(N - 1):
+		clauses += one_or_zero_of([varnum(row + i, i) for i in range(N) if (row + i < N) and (i < N)])
 
-	# diagonal = [(1, 2), (2, 3)] 		diagonal = [(1, 3), (2, 4)]
+	# diagonal = [([(0, 1), (1, 2)] 		diagonal = [(0, 2), (1, 3)]
 	# Correct
 
-	for column in range(2, N):
-		clauses += one_or_zero_of([varnum(1 + i, column + i) for i in range(0, N) if (column + i <= N) and (1 + i <= N)])
+	for column in range(1, N - 1):
+		clauses += one_or_zero_of([varnum(i, column + i) for i in range(N) if (column + i < N) and (i < N)])
 	
 	# diagonal = [(8, 1), (7, 2)]		diagonal = [(8, 2), (7, 3)]
 	# Correct
 
-	for column in range(1, N):
-		clauses += one_or_zero_of([varnum(N - i, column + i) for i in range(0, N) if (column + i <= N) and (8 - i >= 1)])
+	for column in range(N):
+		clauses += one_or_zero_of([varnum(N - i, column + i) for i in range(N) if (column + i < N) and (N - i >= 0)])
 
 	# diagonal = [(2, 1), (1, 2)]		diagonal = [(3, 1), (2, 2), (1, 3)]
 	# Correct
 
-	for row in range(2, N):
-		clauses += one_or_zero_of([varnum(row - i, 1 + i) for i in range(0, N) if (row - i >= 1) and (1 + i <= N)])
+	for row in range(1, N):
+		clauses += one_or_zero_of([varnum(row - i, i) for i in range(N) if (row - i >= 0) and (i < N)])
 
 	return clauses
 
@@ -86,10 +86,10 @@ def solve_puzzle(n):
 		return None
 
 	result = []
-	for row in range(1, n + 1):
-		for column in range(1, n + 1):
+	for row in range(n):
+		for column in range(n):
 			if varnum(row, column) in solution:
-				result.append(column - 1)
+				result.append(column)
 	return result
 
 
@@ -116,5 +116,3 @@ if __name__ == "__main__":
 	if result:
 		print(" ".join([str(e) for e in result]))
 		print(check(result))
-	else:
-		print(-1)
