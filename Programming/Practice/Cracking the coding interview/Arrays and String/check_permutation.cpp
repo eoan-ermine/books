@@ -22,4 +22,27 @@ int main() {
 
 	std::cout << "One " <<
 		"is" << (first_frequency == second_frequency ? "" : "n't") << " a permutation of other" << std::endl;
+
+	// Other solution:
+
+	bool okay = true;
+
+	std::sort(first.begin(), first.end());
+	std::sort(second.begin(), second.end());
+
+	if(first.size() != second.size()) {
+		okay = false;
+	} else {
+		for(std::size_t idx = 0, size = first.size(); idx != size; ++idx) {
+			if(first[idx] != second[idx]) {
+				okay = false;
+				break;
+			}
+		}
+	}
+	if(okay) {
+		std::cout << "One is a permutation of another" << std::endl;
+	} else {
+		std::cout << "One isn't a permutation of another" << std::endl;
+	}
 }
