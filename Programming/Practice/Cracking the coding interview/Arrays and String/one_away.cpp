@@ -28,6 +28,29 @@ bool is_one_away(const std::string& a, const std::string& b) {
 	return true;
 }
 
+bool another_is_one_away(const std::string& a, const std::string& b) {
+	int a_size = a.size(), b_size = b.size();
+	if(std::abs(a_size - b_size) > 1) return false;
+
+	std::size_t i = 0, j = 0;
+	std::size_t edits = 0;
+	while(i != a_size && j != b_size) {
+		if(a[i] != b[j]) {
+			if(a_size < b_size) {
+				++j;
+			} else if(b_size < a_size) {
+				++i;
+			} else {
+				++i, ++j;
+			}
+			if(++edits > 1) return false;
+		} else {
+			++i, ++j;
+		}
+	}
+	return true;
+}
+
 int main() {
 	std::string first, second;
 
@@ -35,4 +58,5 @@ int main() {
 	std::getline(std::cin, second);
 
 	std::cout << is_one_away(first, second) << std::endl;
+	std::cout << another_is_one_away(first, second) << std::endl;
 }
