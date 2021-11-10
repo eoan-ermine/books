@@ -25,4 +25,6 @@ int main() {
 		}
 	}
 	std::cout << (unique ? "UNIQUE" : "NOT UNIQUE") << std::endl;
+
+	// Complexity: O(n log n)
 }
