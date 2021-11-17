@@ -1,0 +1,15 @@
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\bin\Debug\net6.0\HelloCS.exe
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\bin\Debug\net6.0\HelloCS.deps.json
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\bin\Debug\net6.0\HelloCS.runtimeconfig.json
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\bin\Debug\net6.0\HelloCS.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\bin\Debug\net6.0\ref\HelloCS.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\bin\Debug\net6.0\HelloCS.pdb
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\obj\Debug\net6.0\HelloCS.csproj.AssemblyReference.cache
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\obj\Debug\net6.0\HelloCS.GeneratedMSBuildEditorConfig.editorconfig
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\obj\Debug\net6.0\HelloCS.AssemblyInfoInputs.cache
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\obj\Debug\net6.0\HelloCS.AssemblyInfo.cs
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\obj\Debug\net6.0\HelloCS.csproj.CoreCompileInputs.cache
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\obj\Debug\net6.0\HelloCS.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\obj\Debug\net6.0\ref\HelloCS.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\obj\Debug\net6.0\HelloCS.pdb
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter01\HelloCS\obj\Debug\net6.0\HelloCS.genruntimeconfig.cache
