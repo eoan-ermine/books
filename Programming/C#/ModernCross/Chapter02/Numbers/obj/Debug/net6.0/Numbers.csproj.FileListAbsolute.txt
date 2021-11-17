@@ -1,0 +1,15 @@
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\bin\Debug\net6.0\Numbers.exe
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\bin\Debug\net6.0\Numbers.deps.json
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\bin\Debug\net6.0\Numbers.runtimeconfig.json
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\bin\Debug\net6.0\Numbers.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\bin\Debug\net6.0\ref\Numbers.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\bin\Debug\net6.0\Numbers.pdb
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\obj\Debug\net6.0\Numbers.csproj.AssemblyReference.cache
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\obj\Debug\net6.0\Numbers.GeneratedMSBuildEditorConfig.editorconfig
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\obj\Debug\net6.0\Numbers.AssemblyInfoInputs.cache
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\obj\Debug\net6.0\Numbers.AssemblyInfo.cs
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\obj\Debug\net6.0\Numbers.csproj.CoreCompileInputs.cache
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\obj\Debug\net6.0\Numbers.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\obj\Debug\net6.0\ref\Numbers.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\obj\Debug\net6.0\Numbers.pdb
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Numbers\obj\Debug\net6.0\Numbers.genruntimeconfig.cache
