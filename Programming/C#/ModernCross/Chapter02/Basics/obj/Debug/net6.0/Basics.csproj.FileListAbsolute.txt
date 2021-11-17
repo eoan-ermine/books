@@ -1,0 +1,15 @@
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\bin\Debug\net6.0\Basics.exe
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\bin\Debug\net6.0\Basics.deps.json
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\bin\Debug\net6.0\Basics.runtimeconfig.json
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\bin\Debug\net6.0\Basics.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\bin\Debug\net6.0\ref\Basics.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\bin\Debug\net6.0\Basics.pdb
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\obj\Debug\net6.0\Basics.csproj.AssemblyReference.cache
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\obj\Debug\net6.0\Basics.GeneratedMSBuildEditorConfig.editorconfig
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\obj\Debug\net6.0\Basics.AssemblyInfoInputs.cache
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\obj\Debug\net6.0\Basics.AssemblyInfo.cs
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\obj\Debug\net6.0\Basics.csproj.CoreCompileInputs.cache
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\obj\Debug\net6.0\Basics.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\obj\Debug\net6.0\ref\Basics.dll
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\obj\Debug\net6.0\Basics.pdb
+\\wsl$\Ubuntu-20.04\root\books\Programming\C#\ModernCross\Chapter02\Basics\obj\Debug\net6.0\Basics.genruntimeconfig.cache
